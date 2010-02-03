@@ -103,4 +103,4 @@
 		EXE_BEGIN_TEMPLATE NEEDNEW
 		EXE_END_TEMPLATE
 		这样即可.
-5.有任何问题，欢迎光临我的博客 http://wwww.vimer.cn，也欢迎给我发邮件：zny2008@gmail.com / dantezhu@vip.qq.com
+5.有任何问题，欢迎光临我的博客 http://www.vimer.cn，也欢迎给我发邮件：zny2008@gmail.com / dantezhu@vip.qq.com
