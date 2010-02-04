@@ -27,8 +27,7 @@
 "=============================================================================
 command! -nargs=? LoadTemplate call LoadTemplate(<f-args>)
 
-"类似宏定义
-"{{{是否需要在新buf里操作
+"类似宏定义{{{
 if(has("win32") || has("win95") || has("win64") || has("win16"))
 	if !exists('g:vimrc_iswindows')
 		let g:vimrc_iswindows=1
@@ -37,7 +36,7 @@ if(has("win32") || has("win95") || has("win64") || has("win16"))
 		let g:vimrc_splitstr='\'
 	endif
 	if !exists('g:template_path')
-		let g:template_path='C:\template\'
+		let g:template_path=$VIM.'\vimfiles\template\'
 	endif
 else
 	if !exists('g:vimrc_iswindows')
@@ -47,9 +46,10 @@ else
 		let g:vimrc_splitstr='/'
 	endif
 	if !exists('g:template_path')
-		let g:template_path='~/template/'
+		let g:template_path=$HOME.'/.vim/template/'
 	endif
 endif
+"是否需要在新buf里操作
 let s:template_neednew = 'NEEDNEW'
 let s:template_sourcefile = '~'.g:vimrc_splitstr.'template_source.vim'
 "}}}
