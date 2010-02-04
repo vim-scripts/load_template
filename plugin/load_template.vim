@@ -16,7 +16,7 @@
 "					试试看，是否有类似模板列表出来啦~
 "					Template filelist:
 "					0		:		cpp/main.cpp
-"					1		:		cpp/static.h
+"					1		:		cpp/singleton.h
 "					please select:
 "					4）你甚至可以自己制作模板文件~~只需要参考已经存在的模板文件就行啦~~
 "					支持vim脚本的哦
@@ -29,6 +29,27 @@ command! -nargs=? LoadTemplate call LoadTemplate(<f-args>)
 
 "类似宏定义
 "{{{是否需要在新buf里操作
+if(has("win32") || has("win95") || has("win64") || has("win16"))
+	if !exists('g:vimrc_iswindows')
+		let g:vimrc_iswindows=1
+	endif
+	if !exists('g:vimrc_splitstr')
+		let g:vimrc_splitstr='\'
+	endif
+	if !exists('g:template_path')
+		let g:template_path='C:\template\'
+	endif
+else
+	if !exists('g:vimrc_iswindows')
+		let g:vimrc_iswindows=0
+	endif
+	if !exists('g:vimrc_splitstr')
+		let g:vimrc_splitstr='/'
+	endif
+	if !exists('g:template_path')
+		let g:template_path='~/template/'
+	endif
+endif
 let s:template_neednew = 'NEEDNEW'
 let s:template_sourcefile = '~'.g:vimrc_splitstr.'template_source.vim'
 "}}}
@@ -130,9 +151,8 @@ function s:LoadFile(path) "{{{
 	endif
 
 	silent execute "new"
-	execute "normal ggdG"
-	execute "0r ".a:path
-	execute "normal Gdd"
+	silent execute "0r ".a:path
+	silent execute "normal Gdd"
 
 	let needNew = 0
 	let i = 1
