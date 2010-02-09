@@ -52,6 +52,7 @@ endif
 "是否需要在新buf里操作
 let s:template_neednew = 'NEEDNEW'
 let s:template_sourcefile = '~'.g:vimrc_splitstr.'template_source.vim'
+let s:template_cursor = 'TEMPLATE_CURSOR'
 "}}}
 
 "对外的主函数
@@ -183,6 +184,14 @@ function s:LoadFile(path) "{{{
 	endif
 	if preFileType != ''
 		silent execute "setf ".preFileType
+	endif
+
+	"指定光标位置
+	silent! call search(s:template_cursor)
+	let w = expand("<cword>")
+	if w == s:template_cursor 
+		silent normal diw
+		startinsert
 	endif
 endfunction
 "}}}
